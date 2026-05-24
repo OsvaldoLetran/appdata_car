@@ -30,12 +30,18 @@ print(f'datos nulos solo en engine_capacity: {df.engine_capacity.isnull().sum()}
 
 
 fig, (ax_hist, ax_box) = plt.subplots(1, 2, figsize = (11.5, 5))
-sns.histplot(df, x = 'price_usd', hue = 'engine_type', multiple = 'stack', ax = ax_hist)
+sns.histplot(df, x = 'price_usd', hue = 'engine_type', multiple = 'stack', 
+            ax = ax_hist)
 sns.boxplot(df, x = 'price_usd', ax = ax_box)
 # sns.boxplot(df, x = 'engine_fuel', y = 'price_usd', ax = ax_box)
-plt.show()
+# plt.show()
+plt.savefig('grafica1.png', bbox_inches='tight')
+plt.close()  # Libera memoria
 
 
 fig, axes_Q7 = plt.subplots()
-sns.histplot(Q7_df, x='price_usd', hue = 'year_produced', ax = axes_Q7)
-plt.show()
+sns.histplot(Q7_df, x='price_usd', hue = Q7_df['year_produced'].astype(str), 
+            ax = axes_Q7)
+# plt.show()
+plt.savefig('grafica2.png', bbox_inches='tight')
+plt.close()
